@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ime"
+        android:text="Ime"
+        android:layout_weight="0"
+        android:textColor="@color/white"
+        android:drawablePadding="12sp"
+        android:textSize="25sp"
+        android:inputType="textPersonName"
+        android:padding="12sp"/>
+
+            <TextView
+                android:id="@+id/prezime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="106dp"
+                android:layout_weight="0"
+                android:layout_toRightOf="@id/ime"
+                android:drawablePadding="12sp"
+                android:inputType="textPersonName"
+                android:padding="12sp"
+                android:text="Prezime"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+            <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0"
+            android:layout_toRightOf="@id/prezime"
+            android:drawablePadding="12sp"
+            android:inputType="textPersonName"
+            android:padding="12sp"
+            android:text="Email"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+            <TextView
+                android:id="@+id/mob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0"
+                android:layout_toRightOf="@id/email"
+                android:drawablePadding="12sp"
+                android:inputType="textPersonName"
+                android:padding="12sp"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+   </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

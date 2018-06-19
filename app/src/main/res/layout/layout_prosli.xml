@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datumt"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:text="Datum"/>
+
+    <TextView
+        android:id="@+id/vrijemet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Vrijeme"
+        android:textSize="20dp" />
+</LinearLayout>

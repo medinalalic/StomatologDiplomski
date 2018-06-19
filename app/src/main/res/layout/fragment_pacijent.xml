@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:orientation="vertical"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:background="@drawable/bcc"
+    tools:context=".PacijentFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search"
+            android:layout_weight="0"
+            android:layout_marginTop="5sp"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            android:drawablePadding="12sp"
+            android:hint="Unesite ime za pretragu"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:inputType="textPersonName"
+            android:padding="12sp"
+            android:textColorHint="@color/white"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnTrazi"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            android:clickable="true"
+
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:text="Pretraži"
+
+            android:padding="16dp"
+
+            android:background="@color/white"
+            android:textColor="#213e8f"
+
+            android:layout_below="@+id/txtUsername"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="30sp"
+
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
+
+            <ListView
+                android:id="@+id/ip"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:scrollbars="none" />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

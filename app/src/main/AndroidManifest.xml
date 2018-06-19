@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.medina.stomatologdiplomski">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_tooth"
+        android:label="Kebo Dental"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MeniActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MjestoFragmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PretragaTerminaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".KalendarTerminaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UrediProfilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".KalendarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TabActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Tab2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Tab3Activity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MjestoActivity" />
+        <activity android:name=".PrijedlogActivity"
+
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>
