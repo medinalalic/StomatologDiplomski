@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.medina.stomatologdiplomski.Helper.Sesija;
+import com.example.medina.stomatologdiplomski.Model.KorisniciVM;
 
 public class MeniActivity extends AppCompatActivity {
 private ImageView odjava;
@@ -70,10 +71,23 @@ termin=findViewById(R.id.btnPretraga);
 
             }
         });
+
+        Intent intent = this.getIntent();
+        final Bundle bundle = intent.getExtras();
         profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MeniActivity.this, UrediProfilActivity.class));
+                Intent i= new Intent(MeniActivity.this, UrediProfilActivity.class);
+                if(bundle!=null) {
+                    KorisniciVM k = (KorisniciVM) bundle.getSerializable("korisnik");
+                    Bundle arg=new Bundle();
+                    arg.putSerializable("korisnik2",k);
+                    i.putExtras(arg);
+                    startActivity(i);
+                }
+              else{
+                    startActivity(i);
+                }
 
             }
         });

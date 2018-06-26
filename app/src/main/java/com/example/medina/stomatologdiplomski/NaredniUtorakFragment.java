@@ -61,10 +61,8 @@ public class NaredniUtorakFragment extends Fragment {
                            UtorakVM.Utorak x=utorakVM._Utorak.get(position);
                            TextView tv=view.findViewById(R.id.uto1);
                            tv.setText(x.Pacijent);
-                           TextView tvdatum=view.findViewById(R.id.uto2);
-
-                           String t= F.Date_ddMMyyyy(x.Datum);
-                           tvdatum.setText(t);
+                           TextView tvr=view.findViewById(R.id.razlog);
+                           tvr.setText(x.Napomena);
                            TextView tvvrijeme=view.findViewById(R.id.uto3);
                            String v=F.Time_HHmm(x.Vrijeme);
                            tvvrijeme.setText(v);
@@ -72,6 +70,10 @@ public class NaredniUtorakFragment extends Fragment {
                        }
                    });
                }
+                if(utorakVM._Utorak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
+                }
             }
         });
 

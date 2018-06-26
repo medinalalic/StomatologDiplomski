@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -50,7 +52,7 @@ public class PacijentFragment extends Fragment {
         pacijentiLV=(ListView) rootView.findViewById(R.id.ip);
         final EditText unos=(EditText) rootView.findViewById(R.id.search);
 
-        Button pretraga=(Button) rootView.findViewById(R.id.btnTrazi);
+        ImageButton pretraga=(ImageButton) rootView.findViewById(R.id.btnTrazi);
 
         PacijentApi.getAllPpacijenti(getContext(),
                 new MyRunnable<JSONArray>() {
@@ -107,14 +109,18 @@ public class PacijentFragment extends Fragment {
         pretraga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(!unos.getText().toString().equals("")){
                     PacijentApi.getPacijentByIme(getActivity(),unos.getText().toString(),
                             new MyRunnable<JSONArray>() {
                                 @Override
                                 public void run(final JSONArray result) {
-                                    if (result == null)
+
+                                    if (result==null){
                                         Toast.makeText(getActivity(), "Neuspješno obavljeno", Toast.LENGTH_SHORT).show();
-                                    else {
+
+                                    }
+                                  else {
 
                                         Global.sviPacijenti = PacijentApi.jsonToPacijentList(result);
                                         pacijentiLV.setAdapter(new BaseAdapter() {

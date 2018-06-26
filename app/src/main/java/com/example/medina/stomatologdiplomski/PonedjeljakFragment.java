@@ -53,6 +53,7 @@ public class PonedjeljakFragment extends Fragment {
             @Override
             public void run(final PonedjeljakVM ponedjeljakVM) {
                 if(ponedjeljakVM !=null){
+
 lista.setAdapter(new BaseAdapter() {
     @Override
     public int getCount() {
@@ -79,10 +80,8 @@ lista.setAdapter(new BaseAdapter() {
         PonedjeljakVM.Ponedjeljak x=ponedjeljakVM._Ponedjeljak.get(position);
         TextView tv=view.findViewById(R.id.pacijent);
         tv.setText(x.Pacijent);
-        TextView tvdatum=view.findViewById(R.id.datum);
-
-        String t=F.Date_ddMMyyyy(x.Datum);
-        tvdatum.setText(t);
+        TextView tvr=view.findViewById(R.id.razlog);
+        tvr.setText(x.Napomena);
         TextView tvvrijeme=view.findViewById(R.id.vrijeme);
         String v=F.Time_HHmm(x.Vrijeme);
         tvvrijeme.setText(v);
@@ -92,7 +91,10 @@ lista.setAdapter(new BaseAdapter() {
 });
                 }
 
-
+                if(ponedjeljakVM._Ponedjeljak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
+                }
                 lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -1,6 +1,8 @@
 package com.example.medina.stomatologdiplomski.Model;
 
-public class KorisniciVM {
+import java.io.Serializable;
+
+public class KorisniciVM implements Serializable {
     public int Id ;
     public String Ime ;
     public String Prezime ;

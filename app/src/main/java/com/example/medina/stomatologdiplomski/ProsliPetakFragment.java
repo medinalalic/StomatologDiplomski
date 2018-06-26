@@ -61,16 +61,17 @@ public class ProsliPetakFragment extends Fragment {
                             PetakVM.Petak x=petakVM._Petak.get(position);
                             TextView tv=view.findViewById(R.id.pet);
                             tv.setText(x.Pacijent);
-                            TextView tvdatum=view.findViewById(R.id.pet1);
-
-                            String t= F.Date_ddMMyyyy(x.Datum);
-                            tvdatum.setText(t);
+                            TextView tvr=view.findViewById(R.id.razlog);
+                            tvr.setText(x.Napomena);
                             TextView tvvrijeme=view.findViewById(R.id.pet2);
                             String v=F.Time_HHmm(x.Vrijeme);
                             tvvrijeme.setText(v);
                             return view;
                         }
                     });
+                }  if(petakVM._Petak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
                 }
             }
         });

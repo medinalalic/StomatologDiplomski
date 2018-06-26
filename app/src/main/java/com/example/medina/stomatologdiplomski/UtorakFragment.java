@@ -37,6 +37,7 @@ public class UtorakFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view= inflater.inflate(R.layout.fragment_utorak, container, false);
         final ListView lista=view.findViewById(R.id.utorakLista);
+
         TerminApi.getUtorak(getContext(), new MyRunnable<UtorakVM>() {
             @Override
             public void run(final UtorakVM utorakVM) {
@@ -67,10 +68,8 @@ public class UtorakFragment extends Fragment {
                             UtorakVM.Utorak x=utorakVM._Utorak.get(position);
                             TextView tv=view.findViewById(R.id.pp);
                             tv.setText(x.Pacijent);
-                            TextView tvdatum=view.findViewById(R.id.dd);
-
-                            String t= F.Date_ddMMyyyy(x.Datum);
-                            tvdatum.setText(t);
+                            TextView tvr=view.findViewById(R.id.razlog);
+                            tvr.setText(x.Napomena);
                             TextView tvvrijeme=view.findViewById(R.id.vv);
                             String v=F.Time_HHmm(x.Vrijeme);
                             tvvrijeme.setText(v);
@@ -97,6 +96,10 @@ public class UtorakFragment extends Fragment {
                             }
                         }
                     });
+                }
+                if(utorakVM._Utorak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
                 }
             }
         });

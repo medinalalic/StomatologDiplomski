@@ -62,16 +62,18 @@ public class ProsliUtorakFragment extends Fragment {
                             UtorakVM.Utorak x=utorakVM._Utorak.get(position);
                             TextView tv=view.findViewById(R.id.pacijentprou);
                             tv.setText(x.Pacijent);
-                            TextView tvdatum=view.findViewById(R.id.datumprou);
-
-                            String t= F.Date_ddMMyyyy(x.Datum);
-                            tvdatum.setText(t);
+                            TextView tvr=view.findViewById(R.id.razlog);
+                            tvr.setText(x.Napomena);
                             TextView tvvrijeme=view.findViewById(R.id.vrijemeprou);
                             String v=F.Time_HHmm(x.Vrijeme);
                             tvvrijeme.setText(v);
                             return view;
                         }
                     });
+                }
+                if(utorakVM._Utorak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
                 }
             }
         });

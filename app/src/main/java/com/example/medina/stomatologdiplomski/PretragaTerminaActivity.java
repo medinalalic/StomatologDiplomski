@@ -5,12 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -61,7 +64,7 @@ int button1;
             }
         });
 
-        Button pretraga=(Button)findViewById(R.id.btnPretraga);
+        ImageButton pretraga=(ImageButton)findViewById(R.id.btnPretraga);
         pretraga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +77,8 @@ int button1;
                                     if (result == null)
                                         Toast.makeText(PretragaTerminaActivity.this, "Neuspješno obavljeno", Toast.LENGTH_SHORT).show();
                                     else {
-
+                                        CardView cd=(CardView)findViewById(R.id.card);
+                                        cd.setVisibility(View.VISIBLE);
                                         Global.sviTermini = TerminApi.jsonToTerminList(result);
                                         listatermina.setAdapter(new BaseAdapter() {
                                             @Override

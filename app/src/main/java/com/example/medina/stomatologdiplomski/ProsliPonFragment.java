@@ -61,16 +61,17 @@ public class ProsliPonFragment extends Fragment {
                             PonedjeljakVM.Ponedjeljak x=ponedjeljakVM._Ponedjeljak.get(position);
                             TextView tv=view.findViewById(R.id.pacijentpro);
                             tv.setText(x.Pacijent);
-                            TextView tvdatum=view.findViewById(R.id.datumpro);
-
-                            String t= F.Date_ddMMyyyy(x.Datum);
-                            tvdatum.setText(t);
+                            TextView tvr=view.findViewById(R.id.razlog);
+                            tvr.setText(x.Napomena);
                             TextView tvvrijeme=view.findViewById(R.id.vrijemepro);
                             String v=F.Time_HHmm(x.Vrijeme);
                             tvvrijeme.setText(v);
                             return view;
                         }
                     });
+                }   if(ponedjeljakVM._Ponedjeljak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
                 }
             }
         });

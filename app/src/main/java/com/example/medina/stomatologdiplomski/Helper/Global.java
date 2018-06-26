@@ -9,6 +9,7 @@ import com.example.medina.stomatologdiplomski.Model.PrijedlogVM;
 import com.example.medina.stomatologdiplomski.Model.TerminVM;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Global {
@@ -19,7 +20,6 @@ public class Global {
 public static int IDdijagnoza;
     public static int IDusluga;
     public static int IDlijek;
-
 
 
 

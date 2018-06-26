@@ -66,8 +66,7 @@ public class PrijedlogActivity extends AppCompatActivity {
 
                                     TextView ime = (TextView) view.findViewById(R.id.pacijent);
                                     ime.setText(p.IPPacijent);
-                                    TextView ip = (TextView) view.findViewById(R.id.stomatolog);
-                                    ip.setText(p.IPStomatolog);
+
                                     TextView tekst = (TextView) view.findViewById(R.id.prijedlog);
                                     tekst.setText(p.TekstPoruke);
                                     return view;

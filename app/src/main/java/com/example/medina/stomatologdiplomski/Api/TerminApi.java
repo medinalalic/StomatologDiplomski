@@ -15,6 +15,7 @@ import com.example.medina.stomatologdiplomski.Model.PetakVM;
 import com.example.medina.stomatologdiplomski.Model.PonedjeljakVM;
 import com.example.medina.stomatologdiplomski.Model.SrijedaVM;
 import com.example.medina.stomatologdiplomski.Model.TerminVM;
+import com.example.medina.stomatologdiplomski.Model.TrenutnaDatumiVM;
 import com.example.medina.stomatologdiplomski.Model.UtorakVM;
 import com.example.medina.stomatologdiplomski.MyApp;
 
@@ -42,6 +43,59 @@ public class TerminApi {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
+                Toast.makeText(MyApp.getContext(), "Greška u komunikaciji sa serverom : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public static void datumiTrenutne(final Context context, final MyRunnable<TrenutnaDatumiVM> onSuccess) {
+
+        final String url = Config.urlApi + "Termin/DatumiSedmiceTrenutne";
+
+
+        MyVolley.get(url, TrenutnaDatumiVM.class, new Response.Listener<TrenutnaDatumiVM>() {
+            @Override
+            public void onResponse(TrenutnaDatumiVM response) {
+                onSuccess.run(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MyApp.getContext(), "Greška u komunikaciji sa serverom : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public static void datumiNaredne(final Context context, final MyRunnable<TrenutnaDatumiVM> onSuccess) {
+
+        final String url = Config.urlApi + "Termin/DatumiNaredneSedmice";
+
+
+        MyVolley.get(url, TrenutnaDatumiVM.class, new Response.Listener<TrenutnaDatumiVM>() {
+            @Override
+            public void onResponse(TrenutnaDatumiVM response) {
+                onSuccess.run(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MyApp.getContext(), "Greška u komunikaciji sa serverom : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    public static void datumiProsle(final Context context, final MyRunnable<TrenutnaDatumiVM> onSuccess) {
+
+        final String url = Config.urlApi + "Termin/DatumiProsleSedmice";
+
+
+        MyVolley.get(url, TrenutnaDatumiVM.class, new Response.Listener<TrenutnaDatumiVM>() {
+            @Override
+            public void onResponse(TrenutnaDatumiVM response) {
+                onSuccess.run(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MyApp.getContext(), "Greška u komunikaciji sa serverom : " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

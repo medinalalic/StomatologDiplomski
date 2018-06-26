@@ -37,10 +37,12 @@ public class CetvrtakFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view= inflater.inflate(R.layout.fragment_cetvrtak, container, false);
         final ListView lista=view.findViewById(R.id.cetvrtakLista);
+
         TerminApi.getCetvrtak(getContext(), new MyRunnable<CetvrtakVM>() {
             @Override
             public void run(final CetvrtakVM cetvrtakVM) {
                 if(cetvrtakVM!=null){
+
                     lista.setAdapter(new BaseAdapter() {
                         @Override
                         public int getCount() {
@@ -67,10 +69,8 @@ public class CetvrtakFragment extends Fragment {
                             CetvrtakVM.Cetvrtak x=cetvrtakVM._Cetvrtak.get(position);
                             TextView tv=view.findViewById(R.id.pc);
                             tv.setText(x.Pacijent);
-                            TextView tvdatum=view.findViewById(R.id.dc);
-
-                            String t= F.Date_ddMMyyyy(x.Datum);
-                            tvdatum.setText(t);
+                            TextView tvr=view.findViewById(R.id.razlog);
+                            tvr.setText(x.Napomena);
                             TextView tvvrijeme=view.findViewById(R.id.vc);
                             String v=F.Time_HHmm(x.Vrijeme);
                             tvvrijeme.setText(v);
@@ -99,6 +99,10 @@ public class CetvrtakFragment extends Fragment {
                         }
                     });
 
+                }
+                if(cetvrtakVM._Cetvrtak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
                 }
             }
         });

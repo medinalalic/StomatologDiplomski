@@ -37,14 +37,27 @@ public class UrediProfilActivity extends AppCompatActivity {
         telefon = (EditText) findViewById(R.id.txtTelefon);
         pass = (EditText) findViewById(R.id.txtPassword);
 
-
-        ime.setText(k.Ime);
-        prezime.setText(k.Prezime);
-        username.setText(k.KorisnickoIme);
-        email.setText(k.Email);
-        adresa.setText(k.Adresa);
-        telefon.setText(k.Mobitel);
-        pass.setText(k.Lozinka);
+        Intent intent = this.getIntent();
+        final Bundle bundle = intent.getExtras();
+        if(bundle !=null){
+            KorisniciVM k2=(KorisniciVM)bundle.getSerializable("korisnik2");
+            ime.setText(k2.Ime);
+            prezime.setText(k2.Prezime);
+            username.setText(k2.KorisnickoIme);
+            email.setText(k2.Email);
+            adresa.setText(k2.Adresa);
+            telefon.setText(k2.Mobitel);
+            pass.setText(k2.Lozinka);
+        }
+        else {
+            ime.setText(k.Ime);
+            prezime.setText(k.Prezime);
+            username.setText(k.KorisnickoIme);
+            email.setText(k.Email);
+            adresa.setText(k.Adresa);
+            telefon.setText(k.Mobitel);
+            pass.setText(k.Lozinka);
+        }
         k.Id=Sesija.getlogiraniKorisnik().Id;
 
 
@@ -82,23 +95,33 @@ k.IsAdmin=false;
         MyRunnable<KorisniciVM> onSuccess=new MyRunnable<KorisniciVM>() {
             @Override
             public void run(KorisniciVM response) {
-                do_returnToLogin();
+                do_returnToLogin(k);
             }
         };
 
         KorisnikApi.IzmjenaPodataka(UrediProfilActivity.this,onSuccess,k);
 
     }
-    private void do_returnToLogin() {
+    private void do_returnToLogin(final KorisniciVM novi) {
 
         AlertDialog.Builder b = new AlertDialog.Builder(UrediProfilActivity.this);
         b = new AlertDialog.Builder(UrediProfilActivity.this);
 
-        b.setMessage("Uspješno ste izvrišili izmjene, morate se ponovo logirati na aplikaciju!");
-        b.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        b.setMessage("Uspješno ste izvrišili izmjene, da li želite da se odjavite iz aplikacije?");
+        b.setPositiveButton("Da", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
                 yes();
+            }
+        });
+        b.setNegativeButton("Ne", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(UrediProfilActivity.this, MeniActivity.class);
+
+             intent.putExtra("korisnik",novi);
+                startActivity(intent);
+
             }
         });
         b.show();

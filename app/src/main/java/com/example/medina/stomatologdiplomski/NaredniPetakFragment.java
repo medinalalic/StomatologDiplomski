@@ -61,10 +61,8 @@ public class NaredniPetakFragment extends Fragment {
                            PetakVM.Petak x=petakVM._Petak.get(position);
                            TextView tv=view.findViewById(R.id.p);
                            tv.setText(x.Pacijent);
-                           TextView tvdatum=view.findViewById(R.id.d);
-
-                           String t= F.Date_ddMMyyyy(x.Datum);
-                           tvdatum.setText(t);
+                           TextView tvr=view.findViewById(R.id.razlog);
+                           tvr.setText(x.Napomena);
                            TextView tvvrijeme=view.findViewById(R.id.v);
                            String v=F.Time_HHmm(x.Vrijeme);
                            tvvrijeme.setText(v);
@@ -74,6 +72,10 @@ public class NaredniPetakFragment extends Fragment {
                        }
                    });
                }
+                if(petakVM._Petak.size()==0) {
+                    TextView tv = view.findViewById(R.id.tt);
+                    tv.setText("Nema zakazanih termina");
+                }
             }
         });
 
