@@ -43,7 +43,7 @@ public class TerminApi {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
-                Toast.makeText(MyApp.getContext(), "Greška u komunikaciji sa serverom : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyApp.getContext(), "Odaberite datume!", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -74,8 +74,8 @@ int button1;
                             new MyRunnable<JSONArray>() {
                                 @Override
                                 public void run(final JSONArray result) {
-                                    if (result == null)
-                                        Toast.makeText(PretragaTerminaActivity.this, "Neuspješno obavljeno", Toast.LENGTH_SHORT).show();
+                                    if (result.length() == 0)
+                                        Toast.makeText(PretragaTerminaActivity.this, "Nemate termine u tom periodu!", Toast.LENGTH_SHORT).show();
                                     else {
                                         CardView cd=(CardView)findViewById(R.id.card);
                                         cd.setVisibility(View.VISIBLE);
