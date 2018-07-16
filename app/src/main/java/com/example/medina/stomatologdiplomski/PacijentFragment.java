@@ -1,13 +1,16 @@
 package com.example.medina.stomatologdiplomski;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +27,9 @@ import android.widget.Toast;
 import com.example.medina.stomatologdiplomski.Api.PacijentApi;
 import com.example.medina.stomatologdiplomski.Helper.Global;
 import com.example.medina.stomatologdiplomski.Helper.MyRunnable;
+import com.example.medina.stomatologdiplomski.Helper.Sesija;
 import com.example.medina.stomatologdiplomski.Model.PacijentVM;
+import com.example.medina.stomatologdiplomski.Model.ZubVM;
 
 import org.json.JSONArray;
 
@@ -36,7 +41,7 @@ import java.util.Date;
 
 
 public class PacijentFragment extends Fragment {
-    private ListView pacijentiLV;
+
     public static ArrayList<PacijentVM.PacijentInfo> lista = new ArrayList<>();
     public PacijentFragment() {
         // Required empty public constructor
@@ -49,10 +54,11 @@ public class PacijentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView= inflater.inflate(R.layout.fragment_pacijent, container, false);
-        pacijentiLV=(ListView) rootView.findViewById(R.id.ip);
+      final ListView pacijenti=(ListView) rootView.findViewById(R.id.ip);
         final EditText unos=(EditText) rootView.findViewById(R.id.search);
 
-        ImageButton pretraga=(ImageButton) rootView.findViewById(R.id.btnTrazi);
+        ImageView pretraga=(ImageView) rootView.findViewById(R.id.btnTrazi);
+
 
         PacijentApi.getAllPpacijenti(getContext(),
                 new MyRunnable<JSONArray>() {
@@ -65,7 +71,7 @@ public class PacijentFragment extends Fragment {
                             Global.sviPacijenti = PacijentApi.jsonToPacijentList(result);
 
 
-                            pacijentiLV.setAdapter(new BaseAdapter() {
+                            pacijenti.setAdapter(new BaseAdapter() {
                                 @Override
                                 public int getCount() {
                                     return Global.sviPacijenti.size();
@@ -101,11 +107,29 @@ public class PacijentFragment extends Fragment {
                                     mob.setText(p.Mobitel);
                                     return view;
                                 }
-                            });((BaseAdapter) pacijentiLV.getAdapter()).notifyDataSetChanged();
+                            });
                         }
                     }
                 });
+        pacijenti.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final PacijentDetaljiFragment d=new PacijentDetaljiFragment();
 
+                final PacijentVM.PacijentInfo x = Global.sviPacijenti.get(position);
+
+
+                Bundle arg=new Bundle();
+                arg.putInt("pacijent",x.Id);
+                d.setArguments(arg);
+                Util.otvoriFragmentKaoDialog(getActivity(),d);
+
+
+
+
+
+            }
+        });
         pretraga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +147,7 @@ public class PacijentFragment extends Fragment {
                                   else {
 
                                         Global.sviPacijenti = PacijentApi.jsonToPacijentList(result);
-                                        pacijentiLV.setAdapter(new BaseAdapter() {
+                                        pacijenti.setAdapter(new BaseAdapter() {
                                             @Override
                                             public int getCount() {
                                                 return Global.sviPacijenti.size();
@@ -159,11 +183,29 @@ public class PacijentFragment extends Fragment {
                                                 mob.setText(p.Mobitel);
                                                 return view;
                                             }
-                                        });((BaseAdapter) pacijentiLV.getAdapter()).notifyDataSetChanged();
+                                        });
                                     }
                                 }
                             });
+                    pacijenti.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            final PacijentDetaljiFragment d=new PacijentDetaljiFragment();
 
+                            final PacijentVM.PacijentInfo x = Global.sviPacijenti.get(position);
+
+
+                            Bundle arg=new Bundle();
+                            arg.putInt("pacijent",x.Id);
+                            d.setArguments(arg);
+                            Util.otvoriFragmentKaoDialog(getActivity(),d);
+
+
+
+
+
+                        }
+                    });
 
                 }
                 else{
@@ -176,7 +218,7 @@ public class PacijentFragment extends Fragment {
                                     else {
 
                                         Global.sviPacijenti = PacijentApi.jsonToPacijentList(result);
-                                        pacijentiLV.setAdapter(new BaseAdapter() {
+                                        pacijenti.setAdapter(new BaseAdapter() {
                                             @Override
                                             public int getCount() {
                                                 return Global.sviPacijenti.size();
@@ -213,16 +255,40 @@ public class PacijentFragment extends Fragment {
 
                                                 return view;
                                             }
-                                        });((BaseAdapter) pacijentiLV.getAdapter()).notifyDataSetChanged();
+                                        });
+
+
                                     }
                                 }
                             });
 
+                    pacijenti.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            final PacijentDetaljiFragment d=new PacijentDetaljiFragment();
 
+                            final PacijentVM.PacijentInfo x = Global.sviPacijenti.get(position);
+
+
+                            Bundle arg=new Bundle();
+                            arg.putInt("pacijent",x.Id);
+                            d.setArguments(arg);
+                            Util.otvoriFragmentKaoDialog(getActivity(),d);
+
+
+
+
+
+                        }
+                    });
 
                 }
             }
         });
+
+
+
+
 
 
 
